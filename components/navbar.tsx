@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import MenuIcon from "./icons/menu";
 import { MenuType } from "../type";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const navMenus: MenuType[] = [
   { title: "How It Works", path: "/how-it-works" },
@@ -39,9 +40,25 @@ const Navbar = () => {
         >
           Join Now
         </Link>
-        <button className="flex lg:hidden ">
-          <MenuIcon className="cursor-pointer" />
-        </button>
+        <Sheet>
+          <SheetTrigger className="flex lg:hidden ">
+            <MenuIcon className="cursor-pointer" />
+          </SheetTrigger>
+          <SheetContent side="top">
+            <ul className="flex flex-col justify-center items-center text-center h-[50vh] gap-y-6">
+              {navMenus.map((menu) => (
+                <li key={menu.title}>
+                  <Link
+                    href={menu.path}
+                    className="font-medium text-2xl text-black-250"
+                  >
+                    {menu.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   );
