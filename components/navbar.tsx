@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import MenuIcon from "./icons/menu";
+import { MenuType } from "../type";
 
-type NavMenu = {
-  title: string;
-  path: string;
-};
-
-const navMenus: NavMenu[] = [
+const navMenus: MenuType[] = [
   { title: "How It Works", path: "/how-it-works" },
   { title: "All Books", path: "/books" },
   { title: "Blog", path: "/blog" },
@@ -25,7 +21,7 @@ const Navbar = () => {
             alt="ReadersNest Logo aspect-173/32"
           />
         </Link>
-        <ul className="hidden md:flex space-x-6">
+        <ul className="hidden lg:flex space-x-6">
           {navMenus.map((menu) => (
             <li key={menu.title}>
               <Link
@@ -39,11 +35,11 @@ const Navbar = () => {
         </ul>
         <Link
           href="/join"
-          className="bg-primary py-2 px-6 rounded-full text-base font-medium text-white md:block hidden"
+          className="bg-primary py-2 px-6 rounded-full text-base font-medium text-white lg:block hidden"
         >
           Join Now
         </Link>
-        <button className="flex md:hidden ">
+        <button className="flex lg:hidden ">
           <MenuIcon className="cursor-pointer" />
         </button>
       </div>
